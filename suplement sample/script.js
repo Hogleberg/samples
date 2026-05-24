@@ -13,34 +13,15 @@ window.onscroll = function () {
 
 // ===== STRIPE CHECKOUT INICIJALIZACIJA =====
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // Validuoti konfigraciją
-    if (!validateStripeConfig()) {
-        console.error('❌ Sukonfigūruok Stripe raktus config.js faile!');
-        return;
-    }
-    
-    // Naudoti StripeConfig iš config.js
-    const STRIPE_KEY = StripeConfig.publishableKey;
-    const PRODUCT_ID = StripeConfig.productId;
-    
-    // Patikrinti ar Stripe yra įkeltas
+    const PAYMENT_LINK = 'https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE';
+
     if (typeof StripeCheckout === 'undefined') {
         console.warn('⚠️ StripeCheckout nėra sukrauta');
         return;
     }
 
-    // Inicijalizuoti Stripe
-    const stripeCheckout = new StripeCheckout(STRIPE_KEY);
+    const stripeCheckout = new StripeCheckout();
+    stripeCheckout.setupCheckoutButton('#stripe-checkout-btn', PAYMENT_LINK);
 
-    // Nustatyti testinio produkto mygtuką
-    stripeCheckout.setupCheckoutButton('#stripe-checkout-btn', {
-        productId: PRODUCT_ID,
-        productName: 'TEST PRODUCT',
-        productPrice: 2000, // 20.00 EUR centais
-        quantity: 1,
-        currency: 'eur'
-    });
-
-    console.log('✅ Stripe modul inicijalizuota sėkmingai');
+    console.log('✅ Stripe Payment Link inicijalizuotas sėkmingai');
 });
