@@ -13,6 +13,11 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- STRIPE KONFIGURACIJA IR SCRIPTAI -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="config.js"></script>
+    <script src="stripe-checkout.js"></script>
 </head>
 
 <body>
@@ -128,6 +133,19 @@
                     <div class="card-footer">
                         <span class="price">24.99 €</span>
                         <button class="btn btn-sm btn-outline">Į Krepšelį</button>
+                    </div>
+                </div>
+
+                <!-- STRIPE TEST PRODUKTAS -->
+                <div class="product-card highlight">
+                    <div class="card-image">
+                        <p>[STRIPE TEST]</p>
+                    </div>
+                    <h3>TEST PRODUCT</h3>
+                    <p class="product-desc">Testinis produktas Stripe integracijai. Naudok testines korteles testavimui.</p>
+                    <div class="card-footer">
+                        <span class="price">20.00 €</span>
+                        <button class="btn btn-sm" id="stripe-checkout-btn">💳 Testinis Mokėjimas</button>
                     </div>
                 </div>
             </div>
